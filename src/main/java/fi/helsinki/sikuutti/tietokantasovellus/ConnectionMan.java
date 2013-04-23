@@ -26,7 +26,7 @@ public class ConnectionMan {
  //     String url = "jdbc:mysql://localhost:3306/";
             String dbName = "tsoha";
             String uname = "root";
-            String pwd = "ubbiubbi";
+            String pwd = "*******";
 
             Class.forName("com.mysql.jdbc.Driver");
             try {
