@@ -28,8 +28,8 @@
             <c:forEach var="alkio" items="${harkat}">
                 <c:set var="osa" value="${fn:split(alkio, ':')}" />                
                 <tr><td>${osa[0]}</td>
-                    <td>${osa[1]}</td>
-                    <td>${osa[2]}</td>
+                    <td>${osa[1]} tuntia</td>
+                    <td>${osa[2]} kaloria</td>
 
                 </tr>
 

@@ -45,8 +45,8 @@
                                 <option value="<%out.print(arvo);%>"><%out.print(arvo);%></option>
                                 <%}%>         
                             </select></td></tr>
-                    <tr><td>Päivämäärä</td><td><input type="text" name="pvm" value="<%out.print(paiva);%>"></td></tr>
-                    <tr><td>Kesto</td><td><input type="text" name="kesto" /></td></tr>
+                    <tr><td>Päivämäärä (pp.kk.vvvv)</td><td><input type="text" name="pvm" value="<%out.print(paiva);%>"></td></tr>
+                    <tr><td>Kesto (tunti)</td><td><input type="text" name="kesto" /></td></tr>
                     <tr><td>Fiilis</td><td><select name="fiilis"><option value="Ihanaa">Ihanaa</option>
                                 <option value="Loistavaa">Loistavaa</option>
                                 <option value="Mahtavaa">Mahtavaa</option>
@@ -86,9 +86,9 @@
                 <table>
 
 
-                    <tr><td>Alku</td><td><input type="text" name="alku" /></td>
+                    <tr><td>Alku (pp.kk.vvvv)</td><td><input type="text" name="alku" /></td>
                     </tr>
-                    <tr>   <td>Loppuaika</td><td><input type="text" name="loppu" /></td>
+                    <tr>   <td>Loppuaika (pp.kk.vvvv)</td><td><input type="text" name="loppu" /></td>
                     </tr>
 
                     <tr>

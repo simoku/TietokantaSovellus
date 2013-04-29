@@ -33,11 +33,11 @@ public class SQLDao {
     static String HAE_KAYTTAJA = "select * from Kayttajat where KayttajaTunnus=? AND SalaSana=?";
     static String LISAA_KAYTTAJA = "insert into Kayttajat (Nimi,KayttajaTunnus,Salasana,Osoite,Kaupunki,Postinumero,Paino,Ika)"
             + "values (?,?,?,?,?,?,?,?)";
-    static String LISAA_HARJOITUS = "insert into PaivaKirja (Paivamaara,Nimi,Harjoitus,Fiiilis,Kesto,KulutetutKalorit)"
-            + "values (?,?,?,?,?,?)";
-    static String HAE_KALORIT = " select KaloritPerKilo from Harjoitus where laji=?";
+    //static String LISAA_HARJOITUS = "insert into PaivaKirja (Paivamaara,Nimi,Harjoitus,Fiiilis,Kesto,KulutetutKalorit,HarjoitusID) "
+    //        + "select ?,?,?,?,?,?,idHarjoitus from Harjoitus where Laji='Ratsastus'";
+        static String HAE_KALORIT = " select KaloritPerKilo from Harjoitus where laji=?";
     static String HAE_LAJIT = "select Laji,KaloritPerKilo from Harjoitus ";
-    static String HAE_HARJOITUKSET = "select Harjoitus ,sum(Kesto),sum(KulutetutKalorit)FROM tsoha.PaivaKirja where Nimi=? and Paivamaara between ? and ? group by Harjoitus,Kesto,KulutetutKalorit";
+    static String HAE_HARJOITUKSET = "select Harjoitus ,sum(Kesto),sum(KulutetutKalorit)FROM tsoha.PaivaKirja where Nimi=? and Paivamaara between ? and ? group by Harjoitus";
     static String HAE_KAYTTAJA_TIEDOT = "select * from Kayttajat where id=?";
     static String HAE_HARJOITUS = "select Laji from Harjoitus";
 
@@ -189,6 +189,11 @@ public class SQLDao {
     public static boolean paivitaHarjoitus(String laji, String pvm, String kesto, String fiilis, String ID, String paino) {
         boolean paluu = false;
         String kalorit = "";
+       String LISAA_HARJOITUS = "insert into PaivaKirja (Paivamaara,Nimi,Harjoitus,Fiiilis,Kesto,KulutetutKalorit,HarjoitusID) "
+            + "select ?,?,?,?,?,?,idHarjoitus from Harjoitus where Laji='"+laji+"'";
+        
+        
+        
         try {
             currentCon = ConnectionMan.getConnection();
             preparedStatement = currentCon.prepareStatement(HAE_KALORIT);
@@ -198,7 +203,7 @@ public class SQLDao {
             rs = preparedStatement.executeQuery();
 
 
-
+       
 
 
 
@@ -221,7 +226,7 @@ public class SQLDao {
 
 
             preparedStatement = currentCon.prepareStatement(LISAA_HARJOITUS);
-
+            System.out.println("lisaa harjoitus "+preparedStatement);
             preparedStatement.setString(1, aikaParse(pvm));
             preparedStatement.setString(2, ID);
 
@@ -229,6 +234,7 @@ public class SQLDao {
             preparedStatement.setString(4, fiilis);
             preparedStatement.setString(5, kesto);
             preparedStatement.setString(6, kalorit);
+            
             preparedStatement.executeUpdate();
 
 
@@ -628,6 +634,37 @@ public class SQLDao {
             }
         }
         return lista;
+
+
+    }
+    
+    public static int haeHarkkaID(String laji) {
+
+       
+int paluu=0;
+
+        try {
+           
+            currentCon = ConnectionMan.getConnection();
+            preparedStatement = currentCon.prepareStatement("SELECT idHarjoitus FROM Harjoitus where Laji=?");
+
+            preparedStatement.setString(1, laji);
+            rs = preparedStatement.executeQuery();
+            System.out.println(preparedStatement);
+            while(rs.next()){
+            
+            }
+             paluu=rs.getInt(1);
+
+        } catch (Exception x) {
+        } finally {
+            try {
+                currentCon.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SQLDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return paluu;
 
 
     }
