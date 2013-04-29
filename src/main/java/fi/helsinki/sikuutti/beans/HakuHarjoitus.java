@@ -9,16 +9,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Hakee kaikki harjoitukset 
+ * Palautus LinkedList
  * @author sikuutti
  */
 public class HakuHarjoitus extends SQLDao {
+    /**
+     *
+     */
     public LinkedList harjoitukset;
 
+    /**
+     *
+     * @return
+     */
     public LinkedList getHarjoitukset() {
         
         return harjoitukset;
     }
+    /**
+     *
+     */
     public HakuHarjoitus(){
     
     this.harjoitukset=SQLDao.haeKaikkiLajit();

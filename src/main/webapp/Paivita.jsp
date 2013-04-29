@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="box" value="${osa[0]}"</td>
-                        <td><input type="text" name="id" readonly value="${osa[0]}"></td>
+                        <td><input type="hidden" name="id"  value="${osa[0]}"></td>
                         <td><input type="text" name="laji" readonly value="${osa[1]}"></td>
                         <td><input type="text" name="kalori" readonly value="${osa[2]}"></td>
 
@@ -65,7 +65,7 @@
 
                 <tr>                   
 
-                    <td><input type="text" name="id_p" readonly value="${plista[0]}"></td>
+                    <td><input type="hidden" name="id_p"  value="${plista[0]}"></td>
                     <td><input type="text" name="laji_p"  value="${plista[1]}"></td>
                     <td><input type="text" name="kalori_p"  value="${plista[2]}"></td>
                     <td><input type="radio" name="tehtava"  value="poista">Poista</td>

@@ -22,7 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *Kaiki tietokantahaut 
  * @author sikuutti
  */
 public class SQLDao {

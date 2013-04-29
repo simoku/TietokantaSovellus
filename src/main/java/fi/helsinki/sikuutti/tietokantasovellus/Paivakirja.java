@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Tuottaa tiedon päiväkirjasivulle
+ * 
  */
 package fi.helsinki.sikuutti.tietokantasovellus;
 

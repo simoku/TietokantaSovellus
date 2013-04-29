@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Uloskirjaus
+ * Putsaa sessionin parametreista 
  */
 package fi.helsinki.sikuutti.tietokantasovellus;
 

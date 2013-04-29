@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * 
+ * Hakee tiedot Lista.jsp-sivulle
  */
 package fi.helsinki.sikuutti.tietokantasovellus;
 

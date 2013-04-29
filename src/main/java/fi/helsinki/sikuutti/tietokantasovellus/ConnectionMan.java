@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ *Kannan tiedot ja ajurit
  * @author sikuutti
  */
 public class ConnectionMan {
@@ -22,11 +22,11 @@ public class ConnectionMan {
      */
     public static Connection getConnection() {
         try {
- //     String url = "jdbc:mysql://localhost:18875/";
-      String url = "jdbc:mysql://localhost:3306/";
+      String url = "jdbc:mysql://localhost:18875/";
+//      String url = "jdbc:mysql://localhost:3306/";
             String dbName = "tsoha";
             String uname = "root";
-            String pwd = "****";
+            String pwd = "jeejee";
 
             Class.forName("com.mysql.jdbc.Driver");
             try {

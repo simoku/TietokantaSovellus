@@ -23,7 +23,7 @@
             <%li = lista.getLista("2");%>
 
             <table>
-                <tr><td>ID</td><td><input type="text" readonly name="id" value="<%out.print(li.get(0));%>"/></td></tr>
+                <tr><td>ID</td><td><input type="hidden"  name="id" value="<%out.print(li.get(0));%>"/></td></tr>
                 <tr><td>Nimi</td><td><input type="text" name="Nimi" value="<%out.print(li.get(1));%>"/></td></tr>
                 <tr><td>Käyttäjätunnus</td><td><input type="text" name="KayttajaTunnus" value="<%out.print(li.get(2));%>"/></td></tr>
                 <tr><td>Salasana</td><td><input type="password" name="SalaSana" value="<%out.print(li.get(3));%>"/></td></tr>

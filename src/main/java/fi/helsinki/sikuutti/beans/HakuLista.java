@@ -9,13 +9,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ *Hakee lajitiedot
+ * Palauttaa LinkedList
  * @author sikuutti
  */
 public class HakuLista extends SQLDao {
    private LinkedList lista;
    
    
+    /**
+     *
+     */
     public HakuLista(){
         
      
@@ -24,6 +28,10 @@ public class HakuLista extends SQLDao {
     }
 
     
+    /**
+     *
+     * @return
+     */
     public LinkedList getLista() {
         
           
