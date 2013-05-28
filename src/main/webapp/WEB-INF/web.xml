@@ -4,10 +4,7 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>fi.helsinki.sikuutti.tietokantasovellus.Login</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>fi.helsinki.sikuutti.tietokantasovellus.NewServlet</servlet-class>
-    </servlet>
+    
     <servlet>
         <servlet-name>Paivakirja</servlet-name>
         <servlet-class>fi.helsinki.sikuutti.tietokantasovellus.Paivakirja</servlet-class>
@@ -40,10 +37,7 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/NewServlet</url-pattern>
-    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>Paivakirja</servlet-name>
         <url-pattern>/Paivakirja</url-pattern>
