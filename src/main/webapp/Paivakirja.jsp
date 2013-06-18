@@ -98,7 +98,7 @@
                 </table>
             </form>
             <h1>
-
+<p><c:out value="${viesti}"/></p> 
 
                 <p><a href="<%=request.getContextPath()%>/Logout">Kirjaa ulos käyttäjä <%out.print(request.getAttribute("Nimi"));%></td></p>
                 <p>  <a href="Paivita.jsp">Päivitä lajitiedot<td></p>    

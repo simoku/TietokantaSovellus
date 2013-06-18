@@ -23,7 +23,7 @@ public class PaivitaHarjoitus extends HttpServlet {
      * <code>POST</code> methods.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param response servlet respons
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -35,24 +35,39 @@ public class PaivitaHarjoitus extends HttpServlet {
         String id_p = request.getParameter("id_p");
         String kalori_p = request.getParameter("kalori_p");
         String laji_p= request.getParameter("laji_p");
-                
-        String tehtava = request.getParameter("tehtava");
-
+              boolean onkoNumero=true;  
+        String tehtava = request.getParameter("p");
+ String viesti="";
        
+    if(kalori_p!=null){
+        onkoNumero=onkoNumero(kalori_p);
+        
+        if(!onkoNumero(kalori_p)){
+        viesti="Kalorin  pitää olla numeerinen";
+        
+        
+        }
+    }
+      
         if(tehtava==null)
             tehtava="";
-        if(tehtava.equals("poista") && tehtava!=null)
+        if(tehtava.equals("POISTA") && tehtava!=null)
         {
            boolean t=SQLDao.poistaHarjoitus (id_p);
+           System.out.println(t);
+            if (!t){
+                viesti="Poisto ei onnistunut";
+            }
         }
         
-        if(tehtava.equals("paivita")&& tehtava!=null)
+        if(tehtava.equals("MUUTA")&& tehtava!=null && onkoNumero)
         {
             
             boolean tt =SQLDao.paivitaHarjoitus(id_p, "",kalori_p );  
+            
         } 
         
-        if(tehtava.equals("lisaa")&& tehtava!=null)
+        if(tehtava.equals("UUSI")&& tehtava!=null && onkoNumero)
         {
             
             boolean ttt =SQLDao.lisaaHarjoitus(laji_p,kalori_p);  
@@ -63,13 +78,25 @@ public class PaivitaHarjoitus extends HttpServlet {
         System.out.println(plista + " plista");
 
         request.setAttribute("plista", plista);
+        request.setAttribute("viesti", viesti);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Paivita.jsp");
         dispatcher.forward(request, response);
 
 
 
     }
-
+public boolean onkoNumero( String kalori )  
+{  
+   try  
+   {  
+      Integer.parseInt( kalori );  
+      return true;  
+   }  
+   catch( Exception e )  
+   {  
+      return false;  
+   }  
+}  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP

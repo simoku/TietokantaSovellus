@@ -24,7 +24,7 @@ public class Paivakirja extends HttpServlet {
      * <code>GET</code> and
      * <code>POST</code> methods.
      *
-     * @param request servlet request
+     * @param request servlet reques
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
@@ -51,7 +51,17 @@ public class Paivakirja extends HttpServlet {
         String kesto = request.getParameter("kesto");
         String fiilis = request.getParameter("fiilis");
 
-        if (pvm != null) {
+        // testataan keston numeerinen muoto
+        boolean onkoNumero=onkoNumero(kesto);
+        if(!onkoNumero(kesto)){
+        request.setAttribute("viesti"," Harjoituksen kesto pitää olla numeerinen");
+        
+        
+        }
+        
+        
+        if (pvm == null || !onkoNumero ) {
+        } else {
             SQLDao.paivitaHarjoitus(laji, pvm, kesto, fiilis, id, paino);
         }
 
@@ -67,7 +77,18 @@ public class Paivakirja extends HttpServlet {
         
 
     }
-
+public boolean onkoNumero( String kesto )  
+{  
+   try  
+   {  
+      Integer.parseInt( kesto );  
+      return true;  
+   }  
+   catch( Exception e )  
+   {  
+      return false;  
+   }  
+}  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP

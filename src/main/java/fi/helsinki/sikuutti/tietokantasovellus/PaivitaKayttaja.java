@@ -21,7 +21,7 @@ public class PaivitaKayttaja extends HttpServlet {
      * <code>GET</code> and
      * <code>POST</code> methods.
      *
-     * @param request servlet request
+     * @param request servlet reques
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
@@ -42,7 +42,13 @@ public class PaivitaKayttaja extends HttpServlet {
         
         
       boolean t= SQLDao.paivitaKayttaja(id, nimi, kayttajatunnus, salasana, osoite, kaupunki, postnumero, paino, ika);
-        
+       
+      if(t){
+          request.setAttribute("viesti", "Päivitys onnistui");
+      }
+      else{
+           request.setAttribute("viesti", "Päivitys epäonnistui");
+      }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Paivita_kayttaja.jsp");
         dispatcher.forward(request, response);
     }

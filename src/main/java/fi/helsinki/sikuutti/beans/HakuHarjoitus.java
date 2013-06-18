@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Hakee kaikki harjoitukset 
  * Palautus LinkedList
- * @author sikuutti
+ * @author sikuutti 
  */
 public class HakuHarjoitus extends SQLDao {
     /**

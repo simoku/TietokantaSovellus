@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP
+     * Processes requests for both HTT
      * <code>GET</code> and
      * <code>POST</code> methods.
      *

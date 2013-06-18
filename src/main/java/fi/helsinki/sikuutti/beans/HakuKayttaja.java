@@ -10,7 +10,7 @@ import java.util.LinkedList;
 /**
  *Hakee käyttäjätiedot ID:n mukaan
  * Palauttaa LinkedList
- * @author sikuutti
+ * @author sikuutti 
  */
 public class HakuKayttaja extends SQLDao{
     private LinkedList lista;

@@ -26,7 +26,7 @@ public class Lista extends HttpServlet {
      * <code>POST</code> methods.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param response servlet responsee
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */

@@ -19,13 +19,14 @@
     </head>
     <body>
         <jsp:useBean id="lista" class="fi.helsinki.sikuutti.beans.HakuHarjoitus" scope="request" />
-
-        <h1>Lisää, päivitä tai poista laji</h1>
-
+<%String id = (String) session.getAttribute("id");%>
+<%request.setAttribute("id",id);%>
+        <h1>Päivittääksesi tai poistaaksesi lajin ohjelmasta valitse se alla olevasta taulukosta ja paina HAE TIEDOT-painiketta</h1>
+        
         <form action="PaivitaHarjoitus" method="post">
-            <table border="1">
-                <td>Valitse poisto</td>
-                <td>id</td>
+            <table  border="1">
+                <td>Valitse rivi</td>
+                
                 <td>Laji</td>
                 <td>Kalorit tunnissa/kilo</td>
                 <c:forEach var="alkio" items="${lista.harjoitukset}">
@@ -36,7 +37,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="box" value="${osa[0]}"</td>
-                        <td><input type="hidden" name="id"  value="${osa[0]}"></td>
+                        <input type="hidden" name="id"  value="${osa[0]}">
                         <td><input type="text" name="laji" readonly value="${osa[1]}"></td>
                         <td><input type="text" name="kalori" readonly value="${osa[2]}"></td>
 
@@ -44,37 +45,42 @@
 
                 </c:forEach>
 
-                <input type="submit" value="submit">      
+
 
 
 
             </table>
 
-
+            <input type="submit" value="HAE TIEDOT">     
 
 
         </form> 
 
         <form action="PaivitaHarjoitus" method="get">
-            Päivitettävä rivi
+            <h1>Tee muutos alla olevalle riville ja paina MUUTA-painiketta</h1>
+            <h1>POISTA-painike poistaa valitun rivin </h1>
+            <h1>Uuden lajin tiedot voit syöttää suoraan riveille ja tallettaa UUSI-painikkeesta </h1>
             <table>
 
-                <td>id</td>
+               
                 <td>Laji</td>
                 <td>Kalorit tunnissa/kilo</td>
 
                 <tr>                   
 
-                    <td><input type="hidden" name="id_p"  value="${plista[0]}"></td>
+                    <input type="hidden" name="id_p"  value="${plista[0]}">
                     <td><input type="text" name="laji_p"  value="${plista[1]}"></td>
                     <td><input type="text" name="kalori_p"  value="${plista[2]}"></td>
-                    <td><input type="radio" name="tehtava"  value="poista">Poista</td>
-                    <td><input type="radio" name="tehtava"  value="paivita">päivitä</td>
-                    <td><input type="radio" name="tehtava"  value="lisaa" checked>lisaa</td>
+
                 </tr>
-                <input type="submit" value="submit">  
+
             </table>
+            <input type="submit" name="p" value="POISTA"> 
+            <input type="submit" name="p"value="MUUTA">
+            <input type="submit" name="p"value="UUSI">
         </form>
-                    <p> <a href="Paivakirja.jsp">Paluu<td> </p>
-    </body>
-</html>
+         <p><c:out value="${viesti}"/></p>          
+        <%request.setAttribute("id",id);%>
+<p> <a href="<%=request.getContextPath()%>/Paivakirja">Paluu<td> </p>
+                    </body>
+                    </html>

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  *Hakee lajitiedot
  * Palauttaa LinkedList
- * @author sikuutti
+ * @author sikuutti 
  */
 public class HakuLista extends SQLDao {
    private LinkedList lista;
