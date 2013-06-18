@@ -59,6 +59,11 @@
                     </tr>
                 </table>    
             </form>
+
+            <h3>
+                <p color="red"><c:out value="${viesti}"/></p> 
+
+            </h3>
             <h1>Tämän päivän syötetyt harjoitukset</h1>
             <table border="1">
                 <tr> 
@@ -97,9 +102,8 @@
                     </tr>
                 </table>
             </form>
+
             <h1>
-
-
                 <p><a href="<%=request.getContextPath()%>/Logout">Kirjaa ulos käyttäjä <%out.print(request.getAttribute("Nimi"));%></td></p>
                 <p>  <a href="Paivita.jsp">Päivitä lajitiedot<td></p>    
 

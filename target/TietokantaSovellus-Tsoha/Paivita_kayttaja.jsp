@@ -7,7 +7,7 @@
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,10 +17,10 @@
     <body>
         <h1>Päivitä käyttäjä</h1>
         <form action="PaivitaKayttaja" method="post">
-
+        <%String id = (String) session.getAttribute("id");%>
             <jsp:useBean id="lista" class="fi.helsinki.sikuutti.beans.HakuKayttaja" scope="request" />
             <%LinkedList li = new LinkedList();%>
-            <%li = lista.getLista("2");%>
+            <%li = lista.getLista(id);%>
 
             <table>
                 <tr><td>ID</td><td><input type="hidden"  name="id" value="<%out.print(li.get(0));%>"/></td></tr>
@@ -40,7 +40,9 @@
             </table>    
 
         </form>
-
-<p> <a href="Paivakirja.jsp">Paluu<td> </p>
+                
+<p><c:out value="${viesti}"/></p>                
+<%request.setAttribute("id",id);%>
+<p> <a href="<%=request.getContextPath()%>/Paivakirja">Paluu<td> </p>
     </body>
 </html>

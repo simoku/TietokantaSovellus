@@ -12,8 +12,11 @@ root {
 
 body {background-color:#b0c4de;} 
 text {font-family:"Times New Roman", Times, serif;}
+h3 { color: red; }
+
 
 #o
 {
 font-weight:bold;
 }
+
