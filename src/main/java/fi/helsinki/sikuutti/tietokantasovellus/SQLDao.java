@@ -41,13 +41,14 @@ public class SQLDao {
     static String HAE_HARJOITUKSET = "select Harjoitus ,sum(Kesto),sum(KulutetutKalorit)FROM tsoha.PaivaKirja where Nimi=? and Paivamaara between ? and ? group by Harjoitus";
     static String HAE_KAYTTAJA_TIEDOT = "select * from Kayttajat where id=?";
     static String HAE_HARJOITUS = "select Laji from Harjoitus";
-
+    static String HAE_VIIKON_HARJOITUS="select dayname(Paivamaara) as paiva,Harjoitus,sum(Kesto),sum(KulutetutKalorit) FROM PaivaKirja WHERE WEEKOFYEAR(Paivamaara)=WEEKOFYEAR(NOW()) group by paiva,Harjoitus";
+    
     /**
      *
      * @param @return
      */
     public static ArrayList login(String kayttis, String salasana) {
-
+     
 
         ArrayList ar = new ArrayList();
         try {
@@ -124,6 +125,42 @@ public class SQLDao {
 
     }
 
+    public static LinkedList haeViikonHarjoitukset() {
+
+        LinkedList lista = new LinkedList();
+        try {
+
+            currentCon = ConnectionMan.getConnection();
+            preparedStatement = currentCon.prepareStatement(HAE_VIIKON_HARJOITUS);
+
+
+
+            rs = preparedStatement.executeQuery();
+            String a = "";
+            String a1="";
+            while (rs.next()) {
+             
+                a1=muutaVkp(rs.getString(1));
+                
+                
+                
+                a = a1 + ":" + rs.getString(2) + ":" + rs.getString(3)+ ":" + rs.getString(4);
+                lista.add(a);
+                a = "";
+            }
+
+        } catch (Exception x) {
+        } finally {
+            try {
+                currentCon.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SQLDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return lista;
+    }
+    
     public static LinkedList haeKaikkiLajit() {
 
         LinkedList lista = new LinkedList();
@@ -675,5 +712,35 @@ public class SQLDao {
         return paluu;
 
 
+    }
+
+    private static String muutaVkp(String string) {
+        
+        if(string.startsWith("Mon")){
+            string="Maanantai";
+        }
+        else if (string.startsWith("Tue")){
+            string="Tiistai";
+        }
+        else if (string.startsWith("Wed")){
+            string="Keskiviikko";
+        }
+        else if (string.startsWith("Thu")){
+            string="Maanantai";
+        }
+        else if (string.startsWith("Fri")){
+            string="Perjantai";
+        }
+        
+        else if (string.startsWith("Sa")){
+            string="Lauantai";
+        }
+        
+        else if (string.startsWith("Su")){
+            string="Sunnuntai";
+        }
+        
+        
+        return string;
     }
 }

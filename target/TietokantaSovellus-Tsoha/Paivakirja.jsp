@@ -20,7 +20,7 @@
         <title>Päiväkirjasivu</title>
     </head>
     <jsp:useBean id="lista" class="fi.helsinki.sikuutti.beans.HakuLista" scope="request" />
-
+    <jsp:useBean id="viikko" class="fi.helsinki.sikuutti.beans.HakuViikko" scope="request" />
 
 
     <%!        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -32,9 +32,9 @@
     <%!
     %>
     <body>
-        <h1>   
+        <h2>   
             <form action="Paivakirja" method="post">
-                <h1> Lisää harjoitus</h1>
+                <h2> Lisää harjoitus</h2>
                 <table>
                     <tr><td>Laji</td><td><select name="laji">
 
@@ -64,7 +64,8 @@
                 <p color="red"><c:out value="${viesti}"/></p> 
 
             </h3>
-            <h1>Tämän päivän syötetyt harjoitukset</h1>
+
+                <h2>Tämän päivän harjoitukset<h2>
             <table border="1">
                 <tr> 
                     <td id='o'>Laji</td>
@@ -85,9 +86,29 @@
 
 
             </table>
+                <h2> Viikon harjoitukset<h2>
+                <table border="1">
+                <tr> 
+                    <td id='o'>Päivä</td>
+                    <td id='o'>Laji/h</td>
+                    <td id='o' >Kesto h</td>
+                    <td id='o'>Kulutetut kalorit</td>
 
+                </tr>
+                <c:forEach var="alkio" items="${vko_harkat}">
+                    <c:set var="osa" value="${fn:split(alkio, ':')}" />                
+                    <tr><td>${osa[0]}</td>
+                        <td>${osa[1]}</td>
+                        <td>${osa[2]}</td>
+                        <td>${osa[3]}</td>                   
+                    </tr>
+
+                </c:forEach>
+
+
+            </table>
             <form action="Lista" method="post">
-                <h1>Harjoituslista</h1>
+                <h2>Harjoituslista</h2>
                 <table>
 
 
@@ -103,12 +124,12 @@
                 </table>
             </form>
 
-            <h1>
+            <h2>
                 <p><a href="<%=request.getContextPath()%>/Logout">Kirjaa ulos käyttäjä <%out.print(request.getAttribute("Nimi"));%></td></p>
                 <p>  <a href="Paivita.jsp">Päivitä lajitiedot<td></p>    
 
                             <p> <a href="Paivita_kayttaja.jsp">Päivitä omat tiedot<td> </p>       
-                                        </h1>     
+                                        </h2>     
 
                                         </body>
                                         </html>

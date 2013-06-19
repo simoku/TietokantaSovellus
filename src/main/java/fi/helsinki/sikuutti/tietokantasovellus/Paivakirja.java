@@ -53,7 +53,7 @@ public class Paivakirja extends HttpServlet {
 
         // testataan keston numeerinen muoto
         boolean onkoNumero=onkoNumero(kesto);
-        if(!onkoNumero(kesto)){
+        if(!onkoNumero(kesto) && kesto!=null){
         request.setAttribute("viesti"," Harjoituksen kesto pitää olla numeerinen");
         
         
@@ -67,10 +67,16 @@ public class Paivakirja extends HttpServlet {
 
 
         LinkedList harkat = new LinkedList();
-
+        
+        LinkedList vko_harkat= new LinkedList();
+        
+        
         harkat = SQLDao.haePaivanHarjoitukset(id);
+        vko_harkat= SQLDao.haeViikonHarjoitukset();
+        
         System.out.println(harkat);
         request.setAttribute("harkat", harkat);
+        request.setAttribute("vko_harkat", vko_harkat);
         request.setAttribute("Nimi", nimi);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Paivakirja.jsp");
         dispatcher.forward(request, response);
